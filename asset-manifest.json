@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/web_dev_harsh/static/css/main.edf80e2c.css",
+    "main.js": "/web_dev_harsh/static/js/main.510c0c29.js",
+    "static/media/EB-Calculator.png": "/web_dev_harsh/static/media/EB-Calculator.d5cda4979023f9b7314e.png",
+    "static/media/EB-Calculator.jpg": "/web_dev_harsh/static/media/EB-Calculator.34e8c8777cfc87cfa988.jpg",
+    "static/media/icon.png": "/web_dev_harsh/static/media/icon.4e5608b6f8c94697f641.png",
+    "index.html": "/web_dev_harsh/index.html",
+    "main.edf80e2c.css.map": "/web_dev_harsh/static/css/main.edf80e2c.css.map",
+    "main.510c0c29.js.map": "/web_dev_harsh/static/js/main.510c0c29.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.edf80e2c.css",
+    "static/js/main.510c0c29.js"
+  ]
+}
