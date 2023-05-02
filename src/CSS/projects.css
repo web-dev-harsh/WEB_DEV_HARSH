@@ -1,0 +1,51 @@
+:root {
+    --width : 100% ;
+}
+
+#tab4-body {
+    display: grid;
+    padding: 1rem ;
+    gap : 20px ; 
+    justify-content: center;
+    grid-template-columns: repeat( auto-fill, minmax(200px , 1fr) );
+}
+
+.p_box{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    gap: 10px;
+    align-items: center;
+    background-color: #e6e6e6 ;
+    border-radius: .5em;
+}
+
+.p_box:hover{
+    transform: scale(1.05);
+}
+
+.p_img{
+    height: 150px;
+    width: var(--width);
+    background-color: rgb(240, 240, 240);
+    border-radius: 5px;
+}
+
+.p_link:is( :active , :visited , :link ){
+    color: aliceblue;
+    border: none;
+    border-radius: 5px;
+    width: var(--width);
+    height: max-content;
+    font-size: small;
+    text-align: center;
+    padding: 10px ;
+}
+
+#download {
+    background-color: #33cc99
+}
+
+#demo {
+    background-color: #9999ff ;
+}

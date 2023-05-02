@@ -1,0 +1,73 @@
+
+  /* const [email, setEmail] = useState(''); */
+  const [isSending, setIsSending] = useState(false);
+
+  const handleClick = () => {
+    Swal.fire({
+      title: 'Enter Your Email Address',
+      input: 'email',
+      /* inputValue: email, */
+      inputPlaceholder: 'Type your email here',
+      showCancelButton: true,
+      confirmButtonText: isSending ? 'Sending...' : 'Send OTP',
+      allowOutsideClick: () => !Swal.isLoading(),
+      allowEscapeKey: () => !Swal.isLoading(),
+      allowEnterKey: () => !Swal.isLoading(),
+      preConfirm: (value) => {
+        return new Promise((resolve) => {
+          if (value) {
+            resolve(value);
+          } else {
+            Swal.showValidationMessage('Please enter your email address');
+          }
+        });
+      },
+    }).then((result) => {
+      if (result.isConfirmed) {
+        setIsSending(true);
+        const otp = Math.floor(Math.random() * 1000000);
+        const message = `Your OTP is: ${otp}`;
+        const templateParams = {
+          to_email: result.value,
+          message: message,
+        };
+        emailjs
+          .send('service_5kdgnv2', 'template_6latfbd', templateParams, 'sBMZemR0SLw8QdAPw')
+          .then((response) => {
+            Swal.fire({
+
+              title: 'Enter OTP',
+              input: 'text',
+              inputPlaceholder: 'Type the OTP here',
+              showCancelButton: true,
+              confirmButtonText: 'Verify',
+
+              preConfirm: (value) => {
+                return new Promise((resolve) => {
+                  if (value) {
+                    resolve(value);
+                  } else {
+                    Swal.showValidationMessage('Please enter the OTP');
+                  }
+                });
+              },
+
+
+            }).then((result) => {
+              if (result.isConfirmed && result.value === otp.toString()) {
+                Swal.fire('OTP Verified', 'Your email address has been verified', 'success');
+              } else {
+                Swal.fire('OTP Verification Failed', 'Please enter a valid OTP', 'error');
+              }
+            });
+          })
+          .catch((error) => {
+            Swal.fire('OTP Sending Failed', 'Please try again later', 'error');
+          })
+          .finally(() => {
+            setIsSending(false);
+            Swal.resetValidationMessage();
+          });
+      }
+    });
+  };
